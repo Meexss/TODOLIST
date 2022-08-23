@@ -3,7 +3,10 @@ const textUser = document.getElementById("text_user-todo");
 const WorkTodo = document.querySelector(".inwork-todo");
 const closeWorkTodo = document.querySelector(".closework-todo");
 const lowBlock = document.querySelector(".low-block");
-
+const allTask = document.getElementById("all_task-data");
+const closeTask = document.getElementById("close_task-data");
+const deleteAll = document.getElementById("delete_all");
+const deletelast = document.getElementById("delete_last");
 
 //хранение тасков активных
 let tasks = [];
@@ -26,6 +29,7 @@ function Users(information){
 function block(todo){
    WorkTodo.innerHTML = "";
    closeWorkTodo.innerHTML = "";
+   
 
    todo.forEach((task) => {
       const check = task.isChecked ? "checked" : ""
@@ -62,6 +66,7 @@ function block(todo){
 
                if(task.isChecked){
                   return closeWorkTodo.innerHTML += blockHtml
+                  
                } 
                else {
                   return WorkTodo.innerHTML += blockHtml
@@ -69,7 +74,9 @@ function block(todo){
    })
 
    
-
+   allTaskData(tasks)
+   closeTaskData(tasks)
+   console.log(tasks.isChecked)
 }
 
 
@@ -162,3 +169,37 @@ function deleteTask(id, list) {
       }
    })
 }
+
+//счет все задачи
+function allTaskData(list) {
+   allTask.innerHTML = "";
+   return allTask.innerHTML += list.length;
+}
+
+//счет закрытые задачи
+function closeTaskData(list) {
+   closeTask.innerHTML = "";
+
+   let result = list.filter((task) => {
+      return task.isChecked
+
+   })
+
+   closeTask.innerHTML += result.length
+}
+
+//удалить все 
+deleteAll.addEventListener("click", () => {
+   tasks.length = 0; 
+   deleTasks.length = 0
+   console.log(tasks.length)
+   block(tasks)
+})
+
+//удалить последний
+deletelast.addEventListener("click", () => {
+   tasks.splice(tasks[tasks.length -1], 1)
+   console.log(tasks.length)
+   block(tasks)
+})
+

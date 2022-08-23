@@ -1,3 +1,4 @@
+
 body {
   width: 100%;
   background-color: green;
@@ -52,9 +53,9 @@ cursor: pointer;
 }
 
 .inWork {
-  margin: 0 auto;
+
   background-color: white;
-  width: 95%;
+  width: 100%;
   padding-bottom: 25px;
   padding-top: 25px;
   }
@@ -74,9 +75,8 @@ cursor: pointer;
 }
 
 .closeWork {
-  margin: 0 auto;
   background-color: white;
-  width: 95%;
+  width: 100%;
   padding-bottom: 25px;
   padding-top: 25px;
 }
@@ -198,4 +198,26 @@ cursor: pointer;
   text-decoration: line-through;
 }
 
+.aside-todo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 95%;
+  margin: 0 auto;
+}
 
+
+.container {
+  width: 20%;
+  background-color: white;
+  border-right: 1px;
+  border-color: green;
+  border-style: dotted;
+  border-top: 0;
+  border-bottom: 0;
+  border-left: 0;
+}
+
+.subcontainer{
+  width: 80%;
+}

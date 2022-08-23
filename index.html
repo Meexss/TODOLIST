@@ -14,15 +14,27 @@
     <input type="text" placeholder="Введите текст" id="text_user-todo">
     <button id="btn_add-todo" class="btn-16"><span>Добавить заметку</span></button>
 </header>
-<section class="inWork">
-    <h2>Заметки в работе</h2>
-   <div class="inwork-todo">
+<section class="aside-todo">
+    <aside class="container">
+        <div class="all_task">Все задачи:<span id="all_task-data"></span></div>
+        <div class="close_task">Закрытые задачи:<span id="close_task-data"></span></div>
+        <input type="text" class="search__input" placeholder="Search...">
+        <button id="delete_all">Удалить все</button>
+        <button id="delete_last">Удалить последний</button>
+        <button id="show-all">Показать все</button>
+        <button id="show-completed">Показать закрытые</button>
 
-   </div>
-</section>
-<section class="closeWork">
-    <h2>Закрыте заметки</h2>
-    <div class="closework-todo"></div>
+    </aside>
+    <div class="subcontainer">
+        <div class="inWork">
+            <h2>Заметки в работе</h2>
+           <div class="inwork-todo"></div>
+        </div>
+        <div class="closeWork">
+            <h2>Закрыте заметки</h2>
+            <div class="closework-todo"></div>
+        </div>
+    </div>
 </section>
 <script src="script.js"></script>
 </body>

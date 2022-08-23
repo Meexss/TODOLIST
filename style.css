@@ -1,0 +1,194 @@
+body {
+  width: 100%;
+  background-color: green;
+  align-content: center;
+}
+
+
+header {
+  width: 95%;
+  background-color: white;
+  margin: 0 auto;
+  border-radius: 20px 20px 0 0 ;
+  height: 125px;
+  
+}
+
+.title-todo {
+  text-align: center;
+  padding-top: 1%;
+  
+}
+
+#text_user-todo {
+width: 83%;
+height: 30%;
+margin-left: 3%;
+border-radius: 5px;
+background-color:rgba(169, 169, 169, 0.288);
+color: black;
+margin-top: 0;
+border: none;
+padding: 0 0 0 10px;
+
+}
+
+#btn_add-todo {
+  background-color: green;
+  width: 120px;
+  height: 40px;
+  color: white;
+  border-radius: 5px;
+  margin-top: 0;
+border: none;
+padding: 0;
+cursor: pointer;
+}
+
+.inWork {
+  margin: 0 auto;
+  background-color: white;
+  width: 95%;
+  padding-bottom: 25px;
+  padding-top: 25px;
+  }
+
+.inWork h2 {
+  margin-top: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.inwork-todo {
+  margin: 0 auto;
+  background-color: white;
+  width: 95%;
+  padding-bottom: 25px;
+  padding-top: 25px;
+}
+
+.closeWork {
+  margin: 0 auto;
+  background-color: white;
+  width: 95%;
+  padding-bottom: 25px;
+  padding-top: 25px;
+}
+
+.closeWork h2 {
+  margin-top: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.closework-todo {
+  margin: 0 auto;
+  background-color: white;
+  width: 95%;
+  padding-bottom: 25px;
+  padding-top: 25px;
+
+  
+}
+
+/* стили тасков */
+
+.tasks-todo {
+  
+  max-width: 100%;
+  border-top: 1px;
+  border-color: green;
+  border-style: dotted;
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 0;
+  position: relative;
+}
+.tasks-todo:first-child {
+  border: none;
+}
+
+
+.hight-block{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  flex-wrap: wrap;
+  height: 10%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  align-items: center;
+
+}
+
+.one-block{
+  display: flex;
+}
+
+.btn-checkbox {
+  border-color: green;
+  margin-right: 1%;
+  
+}
+.new-task{
+  margin-left: 20px;
+  width: 700px;
+  /* width: 100%; */
+  
+}
+.text-task {
+  font-size: 20px;
+  word-wrap:normal;
+  
+}
+
+.delete-task {
+  display: none;
+  background-color: white;
+  border: none;
+  color: red;
+  font-size: 15px;
+}
+.tasks-todo:hover .delete-task{
+  display:inline;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.delete-task:active {
+  font-size: 20px;
+}
+
+.date-creation{
+  margin-top: 5px;
+  text-align: right;
+}
+#priority-list{
+  background-color: white;
+  border: none;
+  text-align: center;
+}
+.one-options{
+  color: red;
+}
+.two-options{
+  color:gold;
+}
+.three-options{
+  color: green;
+}
+
+.two-block {
+  margin-top: 20px;
+}
+
+/* когда закрыт   */
+
+.checked{
+  background-color: rgba(0, 128, 0, 0.144);
+
+  text-decoration: line-through;
+}
+/* background-color: rgba(0, 128, 0, 0.144); */

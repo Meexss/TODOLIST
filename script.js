@@ -73,7 +73,7 @@ function block(todo){
 }
 
 
-//добавление тасков
+//добавление тасков на кнопку
 btn.addEventListener("click", () => {
    if(textUser.value){
       tasks.unshift(new Users(textUser.value))    
@@ -83,6 +83,21 @@ btn.addEventListener("click", () => {
    else {
       alert("введите текст")
    }
+})
+
+
+//добавление тасков на Enter
+textUser.addEventListener( 'keyup', event => {
+   if( event.code === 'Enter' ) {
+   
+   if(textUser.value){
+      tasks.unshift(new Users(textUser.value))    
+      block(tasks)
+      textUser.value = "";
+   }
+   else {
+      alert("введите текст")
+   }}
 })
 
 

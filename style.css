@@ -44,6 +44,12 @@ border: none;
 padding: 0;
 cursor: pointer;
 }
+#btn_add-todo:hover {
+  transform: scale(1.1);
+}
+#btn_add-todo:active {
+  transform: scale(1.2);
+}
 
 .inWork {
   margin: 0 auto;
@@ -191,4 +197,5 @@ cursor: pointer;
 
   text-decoration: line-through;
 }
-/* background-color: rgba(0, 128, 0, 0.144); */
+
+

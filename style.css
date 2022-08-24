@@ -1,6 +1,5 @@
 
 body {
-  width: 100%;
   background-color: green;
   align-content: center;
 }
@@ -12,6 +11,7 @@ header {
   margin: 0 auto;
   border-radius: 20px 20px 0 0 ;
   height: 125px;
+  padding-bottom: 50px;
   
 }
 
@@ -41,9 +41,11 @@ padding: 0 0 0 10px;
   color: white;
   border-radius: 5px;
   margin-top: 0;
+  margin-left: 1%;
 border: none;
 padding: 0;
 cursor: pointer;
+margin-top: 10px;
 }
 #btn_add-todo:hover {
   transform: scale(1.1);
@@ -79,6 +81,7 @@ cursor: pointer;
   width: 100%;
   padding-bottom: 25px;
   padding-top: 25px;
+  border-radius: 0 0 0 20px;
 }
 
 .closeWork h2 {
@@ -93,6 +96,7 @@ cursor: pointer;
   width: 95%;
   padding-bottom: 25px;
   padding-top: 25px;
+  
 
   
 }
@@ -124,11 +128,16 @@ cursor: pointer;
   margin-top: 15px;
   margin-bottom: 15px;
   align-items: center;
+  width: 100%;
 
 }
 
 .one-block{
   display: flex;
+}
+
+.two-block {
+  text-align: right;
 }
 
 .btn-checkbox {
@@ -139,13 +148,13 @@ cursor: pointer;
 .new-task{
   margin-left: 20px;
   width: 700px;
-  /* width: 100%; */
+  width: 50%;
   
 }
 .text-task {
   font-size: 20px;
   word-wrap:normal;
-  
+  width: 50%;
 }
 
 .delete-task {
@@ -198,26 +207,126 @@ cursor: pointer;
   text-decoration: line-through;
 }
 
-.aside-todo {
+.one_todo {
   display: flex;
   flex-direction: row;
   justify-content: center;
   width: 95%;
   margin: 0 auto;
+  min-height: 705px;
+  height: 90%;
+  background-color: white;
+  border-radius: 0 0 20px 20px;
+  
 }
 
 
 .container {
   width: 20%;
-  background-color: white;
   border-right: 1px;
   border-color: green;
   border-style: dotted;
   border-top: 0;
   border-bottom: 0;
   border-left: 0;
+  padding-left: 3%;
+  border-radius: 0 0 0 20px;
 }
 
 .subcontainer{
   width: 80%;
+  /* height: 80vh; */
+  /* background-color: white; */
+  border-radius: 0 0 0 20px;
 }
+
+.all_task {
+  margin-bottom: 5px;
+}
+
+.all_task span {
+  margin-left: 5px;
+  font-style: bold;
+}
+
+.close_task {
+  margin-bottom: 5px;
+}
+
+.close_task span{
+  margin-left: 5px;
+  font-style: bold;
+}
+.search__input {
+  width: 90%;
+  height: 30px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  background-color:rgba(169, 169, 169, 0.288);
+  color: black;
+  margin-top: 0;
+  border: none;
+  padding: 0 0 0 10px;
+
+}
+
+.sort_blok {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 93%;
+}
+
+#delete_all, #show-all  {
+  background-color: green;
+  width: 150px;
+  font-size: 90%;
+  height: 40px;
+  color: white;
+  border-radius: 5px;
+
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+
+#delete_last, #show-completed {
+  background-color: green;
+  width: 150px;
+  font-size: 90%;
+  height: 40px;
+  color: white;
+  border-radius: 5px;
+
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-top: 10px;
+
+}
+
+#clean_search{
+  background-color: green;
+  width: 93%;
+  font-size: 90%;
+  height: 20px;
+  color: white;
+  border-radius: 5px;
+  margin-right: 10px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-top: 5px;
+
+}
+
+#delete_all:hover , #delete_last:hover , #show-all:hover , #show-completed:hover, #clean_search:hover {
+  transform: scale(1.1);
+}
+#delete_all:active, #delete_last:active, #show-all:active , #show-completed:active, #clean_search:active {
+  transform: scale(1.2);
+}
+
+

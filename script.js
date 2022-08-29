@@ -162,8 +162,6 @@ function closeTaskData(list) {
 //удалить все 
 deleteAll.addEventListener("click", () => {
    tasks.length = 0; 
-   deleTasks.length = 0;
-   console.log(tasks.length);
    localSet()
    block(tasks);
    // localStorage.clear("todos");

@@ -1,29 +1,16 @@
-const btn = document.getElementById("btn_add-todo");
-const textUser = document.getElementById("text_user-todo");
-const WorkTodo = document.querySelector(".inwork-todo");
-const closeWorkTodo = document.querySelector(".closework-todo");
-const lowBlock = document.querySelector(".low-block");
-const allTask = document.getElementById("all_task-data");
-const closeTask = document.getElementById("close_task-data");
-const deleteAll = document.getElementById("delete_all");
-const deletelast = document.getElementById("delete_last");
-const showComplited = document.getElementById("show-completed");
-const displayClose = document.querySelector(".inWork");
-const showAll = document.getElementById("show-all");
-const find = document.querySelector(".search__input");
-const cleanSearch = document.getElementById("clean_search");
+import {btn, textUser, WorkTodo, closeWorkTodo, allTask, closeTask, deleteAll, deletelast, showComplited, displayClose, showAll, find, cleanSearch, subContainer} from "./utils.js"
+
 
 //хранение тасков активных
 let tasks;
-localGet()
 
 
-//хранение тасков удаленных
-let deleTasks = [];
+localGet();
+block(tasks);
 
 //получение из локал сторедж
 function localGet(){
-   !localStorage.tasks ? tasks = [] : tasks = JSON.parse(localStorage.getItem("todos"));
+   return tasks = JSON.parse(localStorage.getItem("todos"));
 }
 
 //запись в локал сторейдж
@@ -37,17 +24,19 @@ function Users(information){
    this.time = new Date().toLocaleDateString();
    this.information = information;
    this.isChecked = false;
+   this.priorety = "no";
 };
-
 
 //создание блоков тасков
 function block(todo){
-   
+   if(todo == null){
+      todo = []
+   }
+   localGet()
    closeWorkTodo.innerHTML ="";
    WorkTodo.innerHTML = "";
-   
    if(todo.length > 0) {
-      todo.forEach((task) => {
+      todo.forEach((task, index) => {
          const check = task.isChecked ? "checked" : "";
          let blockHtml = 
          `<div class="tasks-todo ${check}">
@@ -60,13 +49,6 @@ function block(todo){
                         </div>
                         <div class="two-block">
                            <div class="btn-task">
-                                 <span>Приоритет задачи</span>
-                                 <select name="priority" id="priority-list">
-                                    <option selected disabled>Выберите приоритет</option>
-                                    <option value="" class="one-options">Высокий</option>
-                                    <option value="" class="two-options">Средний</option>
-                                    <option value="" class="three-options">Низкий</option>
-                                 </select>
                                  <button class="delete-task">Х</button>
                                  <p class="date-creation">Дата начала ${task.time}</p>
                            </div>
@@ -81,19 +63,22 @@ function block(todo){
          }  else {
                WorkTodo.innerHTML += blockHtml;
          };
+         
       });
+   
    allTaskData(tasks);
    closeTaskData(tasks);
-   };
+
+   } else {
+      tasks = []
+   }
 };
-
-
-block(tasks);
 
 //добавление тасков на кнопку
 btn.addEventListener("click", () => {
 
    if(textUser.value){
+      localGet()
       tasks.push(new Users(textUser.value));
       localSet();
       block(tasks);
@@ -104,12 +89,12 @@ btn.addEventListener("click", () => {
    
 });
 
-
 //добавление тасков на Enter
 textUser.addEventListener( 'keyup', event => {
    if( event.code === 'Enter' ) {
       if(textUser.value){
-         tasks.unshift(new Users(textUser.value));    
+         tasks.push(new Users(textUser.value));
+         localSet();
          block(tasks);
          textUser.value = "";
       } else {
@@ -118,10 +103,10 @@ textUser.addEventListener( 'keyup', event => {
    };
 });
 
-
-//поиск клика по чекбокс
-WorkTodo.onclick = (event) => {
+//поиск клика по чекбоксу перенос в неактивные и обратно
+subContainer.onclick = (event) => {
    const target = event.target;
+
    if(target.classList.contains("btn-checkbox")) {
       console.log(target.checked);
       const isComplited = target.checked;
@@ -140,26 +125,6 @@ WorkTodo.onclick = (event) => {
       block(tasks);
    };
 };
-
-closeWorkTodo.onclick = (event) => {
-   const target = event.target;
-   if(target.classList.contains("btn-checkbox")) {
-      console.log(target.checked);
-      const isComplited = target.checked;
-      const taskTarget = target.parentElement.parentElement;
-      const taskid = taskTarget.getAttribute('id');
-      changeCheked(taskid, isComplited, tasks);
-      block(tasks);
-      console.log(tasks);
-   };
-   if(target.classList.contains("delete-task")) {
-      const taskTarget = target.parentElement.parentElement.parentElement;
-      const taskid = taskTarget.getAttribute('id');
-      deleteTask(taskid, tasks);
-      block(tasks);
-   };
-};
-
 
 //функция измения статуса
 function changeCheked(id, status, list) {
@@ -170,12 +135,11 @@ function changeCheked(id, status, list) {
    });
 };
 
-
 //удаление задачи
 function deleteTask(id, list) {
    list.forEach((task, index) => {
       if(task.id == id){
-         deleTasks.push(list.splice(index, 1));
+         list.splice(index, 1);
       };
    });
 };
@@ -200,14 +164,18 @@ deleteAll.addEventListener("click", () => {
    tasks.length = 0; 
    deleTasks.length = 0;
    console.log(tasks.length);
+   localSet()
    block(tasks);
+   // localStorage.clear("todos");
+   //block(tasks);
+   
 });
-
 
 //удалить последний
 deletelast.addEventListener("click", () => {
    tasks.splice(tasks[tasks.length -1], 1);
    console.log(tasks.length);
+   localSet()
    block(tasks);
 });
 
@@ -221,7 +189,6 @@ showAll.addEventListener("click", () => {
    displayClose.style.display = "block";
 });
 
-
 //поиск
 find.oninput = () => {
    let findValue = '' + find.value;
@@ -232,7 +199,6 @@ find.oninput = () => {
    });
    block(newArr);
 };
-
 
 //очистить поиск
 cleanSearch.addEventListener("click", () => {
